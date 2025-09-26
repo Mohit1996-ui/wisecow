@@ -28,7 +28,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t mohit29091996/wisecow:${{ github.sha }} .
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:${{ github.sha }} .
         docker tag ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:latest
 
     - name: Login to DockerHub
@@ -50,8 +50,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-   -  name: Deploy to Kubernetes
+    - name: Deploy to Kubernetes
       run: |
-        echo "Pretend Deploymentto kubernetes here"
-        echo "we whould run: kubectl apply -f k8s/"
-        
+        echo "Pretend Deployment to Kubernetes here"
+        echo "We would run: kubectl apply -f k8s/"
