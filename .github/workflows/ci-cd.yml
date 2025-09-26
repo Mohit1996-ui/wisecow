@@ -59,6 +59,6 @@ jobs:
       run: |
         echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
         export KUBECONIG=kubeconfig.yaml 
-        kubect apply -f k8s/
+        kubectl apply -f k8s/
         export KUBECONFIG=kubeconfig.yaml
         kubectl apply -f k8s/
