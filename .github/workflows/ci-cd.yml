@@ -26,9 +26,6 @@ jobs:
         echo "Pretend static code analysis here"
         # You could integrate sonarcloud, eslint, pylint etc.
 
-    - name: Debug Secrets
-      run: echo "Dockerhub Username is: $ {{ secrets.DOCKERHUB_USERNAME }}"
-
     - name: Build Docker image
       run: |
         docker build -t mohit29091996/wisecow:${{ github.sha }} .
@@ -61,5 +58,7 @@ jobs:
     - name: Deploy to Kubernetes
       run: |
         echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
+        export KUBECONIG=kubeconfig.yaml 
+        kubect apply -f k8s/
         export KUBECONFIG=kubeconfig.yaml
         kubectl apply -f k8s/
