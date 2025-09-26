@@ -50,15 +50,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v3
-      with:
-        version: 'latest'
-
-    - name: Deploy to Kubernetes
+   -  name: Deploy to Kubernetes
       run: |
-        echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
-        export KUBECONIG=kubeconfig.yaml 
-        kubectl apply -f k8s/
-        export KUBECONFIG=kubeconfig.yaml
-        kubectl apply -f k8s/
+        echo "Pretend Deploymentto kubernetes here"
+        echo "we whould run: kubectl apply -f k8s/"
+        
