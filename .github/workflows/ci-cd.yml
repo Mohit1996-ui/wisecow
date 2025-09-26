@@ -26,9 +26,12 @@ jobs:
         echo "Pretend static code analysis here"
         # You could integrate sonarcloud, eslint, pylint etc.
 
+    - name: Debug Secrets
+      run: echo "Dockerhub Username is: $ {{ secrets.DOCKERHUB_USERNAME }}"
+
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:${{ github.sha }} .
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:latest .
         docker tag ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:latest
 
     - name: Login to DockerHub
