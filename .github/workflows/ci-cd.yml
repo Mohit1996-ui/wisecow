@@ -31,7 +31,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:latest .
+        docker build -t mohit29091996/wisecow:${{ github.sha }} .
         docker tag ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/wisecow:latest
 
     - name: Login to DockerHub
